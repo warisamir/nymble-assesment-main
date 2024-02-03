@@ -1,0 +1,462 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TravelPackage</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nymble</a>
+</div>
+
+<h1>Coverage Summary for Class: TravelPackage (com.nymble)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TravelPackage</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.5%
+  </span>
+  <span class="absValue">
+    (22/27)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89.1%
+  </span>
+  <span class="absValue">
+    (114/128)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nymble;
+&nbsp;
+&nbsp;import com.nymble.Util.UniqueIdentifierGenerator;
+&nbsp;import com.nymble.Util.Util;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * This is a TravelPackage class.
+&nbsp; * It contains the details of a TravelPackage.
+&nbsp; * It has methods to add a package, book a package, and print package details.
+&nbsp; * 
+&nbsp; * @author Raguvaran
+&nbsp; * @version 1.0
+&nbsp; * @since 2023-12-28
+&nbsp; */
+&nbsp;public class TravelPackage {
+&nbsp;    private String packageNumber;
+&nbsp;    private String name;
+&nbsp;    private int passengerCapacity;
+&nbsp;    private int bookedSeat;
+&nbsp;    private List&lt;Destination&gt; itinerary;
+&nbsp;    private List&lt;Passenger&gt; passengerList;
+<b class="fc">&nbsp;    private static final LinkedHashMap&lt;String, TravelPackage&gt; packageMap = new LinkedHashMap&lt;&gt;();</b>
+&nbsp;
+&nbsp;    //constructor
+<b class="fc">&nbsp;    public TravelPackage() {</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp; * This constructor initializes a new instance of the TravelPackage class.
+&nbsp; *
+&nbsp; * @param number The unique identifier of the travel package.
+&nbsp; * @param name The name of the travel package.
+&nbsp; * @param passengerCapacity The maximum number of passengers that can be accommodated in the travel package.
+&nbsp; * @param itinerary The list of destinations included in the travel package.
+&nbsp; * @param passengerList The list of passengers booked for the travel package.
+&nbsp; */
+<b class="fc">&nbsp;    public TravelPackage(String number,String name, int passengerCapacity, List&lt;Destination&gt; itinerary, List&lt;Passenger&gt; passengerList) {</b>
+<b class="fc">&nbsp;        this.packageNumber = number;</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.passengerCapacity = passengerCapacity;</b>
+<b class="fc">&nbsp;        this.bookedSeat = 0;</b>
+<b class="fc">&nbsp;        this.itinerary = itinerary;</b>
+<b class="fc">&nbsp;        this.passengerList = passengerList;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public TravelPackage(String name, int passengerCapacity) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.passengerCapacity = passengerCapacity;</b>
+<b class="fc">&nbsp;        this.bookedSeat = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Map&lt;String, TravelPackage&gt; getPackageMap() {
+<b class="fc">&nbsp;        return packageMap;</b>
+&nbsp;    }
+&nbsp;    //methods
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setItinerary(List&lt;Destination&gt; itinerary) {
+<b class="nc">&nbsp;        this.itinerary = itinerary;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPassengerList(List&lt;Passenger&gt; passengerList) {
+<b class="nc">&nbsp;        this.passengerList = passengerList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPassengerCapacity(int passengerCapacity) {
+<b class="nc">&nbsp;        this.passengerCapacity = passengerCapacity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBookedSeat(int bookedSeat) {
+<b class="fc">&nbsp;        this.bookedSeat = bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPassengerCapacity() {
+<b class="fc">&nbsp;        return passengerCapacity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getBookedSeat() {
+<b class="fc">&nbsp;        return bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Destination&gt; getItinerary() {
+<b class="fc">&nbsp;        return itinerary;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPackageNumber() {
+<b class="fc">&nbsp;        return packageNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setPackageNumber(String packageNumber) {
+<b class="nc">&nbsp;        this.packageNumber = packageNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getSeatAvailable(){
+<b class="fc">&nbsp;        return this.getPassengerCapacity() - this.getBookedSeat();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Passenger&gt; getPassengerList() {
+<b class="fc">&nbsp;        return passengerList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void printTravelPackageName(){
+<b class="fc">&nbsp;        System.out.println(&quot;Travel Package Name : &quot;+getName());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints the details of all travel packages available.
+&nbsp; * &lt;p&gt;
+&nbsp; * It iterates over all travel packages in the list and prints their details including package number, package name, 
+&nbsp; * number of destinations, and details of each destination and its activities.
+&nbsp; * &lt;p&gt;
+&nbsp; * If there are no travel packages available, it prints a message indicating that.
+&nbsp; */
+&nbsp;    public static void printItineraryDetails(){
+<b class="fc">&nbsp;        LinkedHashMap&lt;String, TravelPackage&gt; travelPackages = packageMap;</b>
+<b class="fc">&nbsp;        if(travelPackages.isEmpty()){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;No Travel Packages Available&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        for(String travelPackage : travelPackages.keySet()) {</b>
+<b class="fc">&nbsp;            TravelPackage tp = travelPackages.get(travelPackage);</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Travel Package Number : &quot;+tp.packageNumber+&quot; Travel Package Name : &quot;+tp.getName());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Destination Details : &quot;);</b>
+&nbsp;            //print destination details
+<b class="fc">&nbsp;            System.out.println(&quot;Number of Destinations : &quot;+tp.getItinerary().size());</b>
+<b class="fc">&nbsp;            for (Destination dest :tp.getItinerary()) {</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Destination Name : &quot;+dest.getName());</b>
+<b class="fc">&nbsp;                if(!dest.getActivities().isEmpty()) {</b>
+<b class="fc">&nbsp;                    for (int i = 0; i &lt; dest.getActivities().size(); i++) {</b>
+<b class="fc">&nbsp;                        Activity activity = dest.getActivities().get(i);</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Activity Name : &quot; + activity.getName() + &quot; | Activity Description : &quot; + activity.getDescription() + &quot; |  Activity Capacity : &quot; +</b>
+<b class="fc">&nbsp;                                activity.getCapacity() + &quot;persons | Activity Cost : ? &quot; + activity.getCost());</b>
+&nbsp;                    }
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method creates a new travel package.
+&nbsp; * &lt;p&gt;
+&nbsp; * It prompts the user to enter the package name and passenger capacity, and then to add destinations.
+&nbsp; * It generates a unique package number and creates a new .TravelPackage object.
+&nbsp; * The new package is then added to the package list.
+&nbsp; * &lt;p&gt;
+&nbsp; * If the user enters invalid input, it catches the NumberFormatException and prompts the user to enter a valid number.
+&nbsp; * Any other exceptions are also caught and printed.
+&nbsp; *
+&nbsp; * @param in The Scanner object used to get user input.
+&nbsp; */
+&nbsp;
+&nbsp;
+&nbsp;    public static void createNewPackage( Scanner in){
+&nbsp;
+&nbsp;        try {
+&nbsp;            TravelPackage travelPackage;
+<b class="fc">&nbsp;            System.out.println(&quot;Enter Your Package Name&quot;);</b>
+<b class="fc">&nbsp;            String name = in.nextLine();</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Enter .Passenger Capacity&quot;);</b>
+<b class="fc">&nbsp;            String num = in.nextLine();</b>
+<b class="fc">&nbsp;            while(!Util.isNumeric(num)){</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Please enter valid number&quot;);</b>
+<b class="nc">&nbsp;                 num = in.nextLine();</b>
+&nbsp;            }
+<b class="fc">&nbsp;            System.out.println(&quot;Add Destinations &quot;);</b>
+<b class="fc">&nbsp;            List&lt;Destination&gt;  destinationList = Destination.addDestination(in, Integer.parseInt(num));</b>
+<b class="fc">&nbsp;            int uniquePackageId = UniqueIdentifierGenerator.generatePackageNumber();</b>
+<b class="fc">&nbsp;            travelPackage = new TravelPackage((&quot;TP&quot;+uniquePackageId),name,Integer.parseInt(num), destinationList,new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Package Added Successfully !&quot;);</b>
+<b class="fc">&nbsp;            packageMap.put(travelPackage.getPackageNumber(), travelPackage);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch(NumberFormatException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Number format exception&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (Exception e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Something went wrong ! Travel Package cannot add&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(e.getStackTrace());</b>
+&nbsp;        }
+&nbsp;        finally {
+<b class="fc">&nbsp;            in.reset();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints the details of all available travel packages.
+&nbsp; * &lt;p&gt;
+&nbsp; * It iterates over the travelPackages map and prints the package number and name of each package.
+&nbsp; *
+&nbsp; * @param travelPackages The map of travel packages to be printed.
+&nbsp; */
+&nbsp;    public static void printTravelPackages( LinkedHashMap&lt;String, TravelPackage&gt; travelPackages){
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Available Travel Packages : &quot;);</b>
+<b class="fc">&nbsp;        for(TravelPackage tp: travelPackages.values()) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Travel Package Number : &quot; + tp.getPackageNumber() + &quot; Travel Package Name : &quot; +tp.getName());</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method checks if there are any travel packages available.
+&nbsp; * &lt;p&gt;
+&nbsp; * It checks if the package list is empty. If it is, it prints a message indicating that there are no travel packages available and returns true.
+&nbsp; * If the package list is not empty, it returns false.
+&nbsp; *
+&nbsp; * @return true if there are no travel packages available, false otherwise.
+&nbsp; */
+&nbsp;    public static  boolean isPackagesEmpty(){
+<b class="fc">&nbsp;        if(packageMap.isEmpty()){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;No Travel Packages Available&quot;);</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method allows a user to book a travel package.
+&nbsp; * &lt;p&gt;
+&nbsp; * It first checks if there are any travel packages available. If not, it returns.
+&nbsp; * It then prints the list of available travel packages and prompts the user to enter the package number they want to book.
+&nbsp; * If the package number is invalid, it prints a message indicating that.
+&nbsp; * If the package number is valid and there are seats available, it lists the destinations and activities in the package and asks the user if they want to book the package.
+&nbsp; * If the user wants to book the package, it prompts them to enter their passenger number and checks if the passenger number is valid.
+&nbsp; * If the passenger number is valid, it checks the user&#39;s interest in activities and adds any activities they&#39;re interested in to their list of activities.
+&nbsp; * It then increments the number of booked seats in the package and adds the passenger to the package&#39;s passenger list.
+&nbsp; * If the user doesn&#39;t want to book the package, it thanks them for visiting.
+&nbsp; * If there are no seats available in the package, it prints a message indicating that.
+&nbsp; * Any exceptions that occur are caught and printed.
+&nbsp; *
+&nbsp; * @param in The Scanner object used to get user input.
+&nbsp; */
+&nbsp;    public static void bookPackage(Scanner in){
+&nbsp;        try {
+<b class="fc">&nbsp;            if (isPackagesEmpty()) {</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="fc">&nbsp;            printTravelPackages(packageMap);</b>
+&nbsp;
+<b class="fc">&nbsp;            System.out.println(&quot;Enter the package number you want to book&quot;);</b>
+<b class="fc">&nbsp;            String packageNumber = in.nextLine();</b>
+<b class="fc">&nbsp;            TravelPackage tp = packageMap.get(packageNumber);</b>
+<b class="fc">&nbsp;            if (tp == null) {</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Invalid Package Number&quot;);</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if (tp != null &amp;&amp; tp.getSeatAvailable() &gt; 0) {</b>
+&nbsp;                //list dest &amp; activities
+<b class="fc">&nbsp;                Destination.printDestinations(tp.getItinerary(), false);</b>
+&nbsp;                //ask for activity code
+&nbsp;
+<b class="fc">&nbsp;                System.out.println(&quot;Do you want to book this Travel package ? yes or no&quot;);</b>
+<b class="fc">&nbsp;                String choice = in.nextLine();</b>
+&nbsp;                String passengerNumber;
+<b class="fc">&nbsp;                if (choice.equals(&quot;yes&quot;)) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Enter your Passenger Number : &quot;);</b>
+<b class="fc">&nbsp;                    passengerNumber = in.nextLine();</b>
+<b class="fc">&nbsp;                    if (Passenger.checkPassenger(passengerNumber)) {</b>
+<b class="fc">&nbsp;                        List&lt;PassengerActivity&gt; passengerActivities = Activity.checkUserInterest(in, passengerNumber);</b>
+<b class="fc">&nbsp;                        if (!passengerActivities.isEmpty()) {</b>
+<b class="fc">&nbsp;                            List&lt;PassengerActivity&gt; passengerActivity = Passenger.getPassengerMap().get(passengerNumber).getPassengerActivities();</b>
+<b class="fc">&nbsp;                            passengerActivity.addAll(passengerActivities);</b>
+&nbsp;                        }
+<b class="fc">&nbsp;                        tp.setBookedSeat(tp.getBookedSeat() + 1);</b>
+<b class="fc">&nbsp;                        tp.getPassengerList().add(Passenger.getPassengerMap().get(passengerNumber));</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Thank you for booking with us !&quot;);</b>
+<b class="fc">&nbsp;                    }</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;                } else if(choice.equals(&quot;no&quot;)){</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Thank you for visiting !&quot;);</b>
+&nbsp;
+&nbsp;                }else{
+<b class="fc">&nbsp;                    System.out.println(&quot;Invalid Choice&quot;);</b>
+&nbsp;                }
+<b class="fc">&nbsp;            }else{</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Sorry ! No seats available !&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        catch (Exception e){</b>
+<b class="nc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints the list of passengers enrolled in a specific travel package.
+&nbsp; * &lt;p&gt;
+&nbsp; * It first checks if there are any travel packages available. If not, it returns.
+&nbsp; * It then prints the list of available travel packages and prompts the user to enter the package number they want to view the passenger list for.
+&nbsp; * It prints the name of the package, the passenger capacity, and the number of passengers enrolled.
+&nbsp; * It then iterates over the list of passengers and prints their name and number.
+&nbsp; * If there are no passengers enrolled in the package, it prints a message indicating that.
+&nbsp; *
+&nbsp; * @param in The Scanner object used to get user input.
+&nbsp; */
+&nbsp;    public static void printPassengerList( Scanner in){
+<b class="fc">&nbsp;        if(isPackagesEmpty()){</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        printTravelPackages(packageMap);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Enter the package number you want to view the Passengers List&quot;);</b>
+<b class="fc">&nbsp;        String packageNumber = in.nextLine();</b>
+<b class="fc">&nbsp;        TravelPackage tp = packageMap.get(packageNumber);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Package Name : &quot;+tp.getName());</b>
+<b class="fc">&nbsp;        if(tp.getPassengerList().isEmpty()){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;No Passengers Enrolled !&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Passengers Capacity : &quot;+tp.getPassengerCapacity());</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Passengers Enrolled : &quot;+tp.getBookedSeat());</b>
+<b class="fc">&nbsp;        for(Passenger passenger : tp.getPassengerList()){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;.Passenger Name : &quot;+passenger.getName() +&quot; | .Passenger Number : &quot;+passenger.getNumber());</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints all available activities in all travel packages.
+&nbsp; * It first checks if there are any packages available. If not, it prints a message and returns.
+&nbsp; * If there are packages, it iterates over each package and checks if there are seats available.
+&nbsp; * If there are seats available, it gets the itinerary (list of destinations) for the package and calls the `printDestinations` method of the `.Destination` class to print the destinations and their activities.
+&nbsp; * After iterating over all packages, it prints a message indicating the end of the activities.
+&nbsp; */
+&nbsp;    
+&nbsp;    public static void printAvailableActivities(){
+<b class="fc">&nbsp;        if(isPackagesEmpty()){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;No Activities Available&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Activities available to book : &quot;);</b>
+<b class="fc">&nbsp;        for(TravelPackage travelPackage: packageMap.values()){</b>
+<b class="fc">&nbsp;            if(travelPackage.getSeatAvailable() &gt; 0){</b>
+<b class="fc">&nbsp;                List&lt;Destination&gt; destinations = travelPackage.getItinerary();</b>
+<b class="fc">&nbsp;                Destination.printDestinations(destinations, true);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        System.out.println(&quot;End of Activities&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public static void loadPackages(){
+<b class="fc">&nbsp;        TravelPackage tp1 = new TravelPackage(&quot;TP1&quot;,&quot;Chennai&quot;,10, Destination.loadDestinations(), new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;        packageMap.put(tp1.getPackageNumber(),tp1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-29 23:06</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Activity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nymble</a>
+</div>
+
+<h1>Coverage Summary for Class: Activity (com.nymble)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Activity</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (21/30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.6%
+  </span>
+  <span class="absValue">
+    (109/119)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nymble;
+&nbsp;
+&nbsp;import com.nymble.Util.UniqueIdentifierGenerator;
+&nbsp;import com.nymble.Util.Util;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;/**
+&nbsp; * This class represents an Activity in a travel package.
+&nbsp; * It contains the details of an activity including its code, name, description, cost, capacity, booked seats, and destination.
+&nbsp; * It also provides methods to add activities, print activities, check user interest, and book activities.
+&nbsp; *
+&nbsp; * @author Raguvaran
+&nbsp; * @version 1.0
+&nbsp; * @since 2023-12-28
+&nbsp; */
+&nbsp;public class Activity {
+&nbsp;
+&nbsp;    private String activityCode;
+&nbsp;    private String name;
+&nbsp;    private String description;
+&nbsp;    private double cost;
+&nbsp;    private int capacity;
+&nbsp;    private int bookedSeat;
+&nbsp;    private String destination;
+<b class="fc">&nbsp;    private static HashMap&lt;String, Activity&gt;  activityMap = new HashMap&lt;&gt;();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Activity(){</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Constructor for the Activity class.
+&nbsp;     *
+&nbsp;     * @param number The activity code.
+&nbsp;     * @param name The name of the activity.
+&nbsp;     * @param description The description of the activity.
+&nbsp;     * @param cost The cost of the activity.
+&nbsp;     * @param capacity The capacity of the activity.
+&nbsp;     * @param destination The destination of the activity.
+&nbsp;     */
+<b class="fc">&nbsp;    public Activity( String number, String name, String description, double cost, int capacity, String destination) {</b>
+<b class="fc">&nbsp;        this.activityCode = number;</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.description = description;</b>
+<b class="fc">&nbsp;        this.cost = cost;</b>
+<b class="fc">&nbsp;        this.capacity = capacity;</b>
+<b class="fc">&nbsp;        this.bookedSeat = 0;</b>
+<b class="fc">&nbsp;        this.destination = destination;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDescription() {
+<b class="fc">&nbsp;        return description;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescription(String description) {
+<b class="nc">&nbsp;        this.description = description;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getCost() {
+<b class="fc">&nbsp;        return cost;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCost(double cost) {
+<b class="nc">&nbsp;        this.cost = cost;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCapacity() {
+<b class="fc">&nbsp;        return capacity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCapacity(int capacity) {
+<b class="nc">&nbsp;        this.capacity = capacity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getBookedSeat() {
+<b class="fc">&nbsp;        return bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBookedSeat(int bookedSeat) {
+<b class="fc">&nbsp;        this.bookedSeat = bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getSeatAvailable(){
+<b class="nc">&nbsp;        return this.capacity - this.bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getActivityCode() {
+<b class="nc">&nbsp;        return activityCode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setActivityCode(String activityCode) {
+<b class="nc">&nbsp;        this.activityCode = activityCode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDestination() {
+<b class="fc">&nbsp;        return destination;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDestination(String destination) {
+<b class="nc">&nbsp;        this.destination = destination;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static HashMap&lt;String, Activity&gt; getActivityMap() {
+<b class="fc">&nbsp;        return activityMap;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void setActivityMap(HashMap&lt;String, Activity&gt; activityMap) {
+<b class="nc">&nbsp;        Activity.activityMap = activityMap;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getAvailableSeat(){
+<b class="fc">&nbsp;        return this.capacity - this.bookedSeat;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private String getDestination(String activity){
+<b class="fc">&nbsp;        return activityMap.get(activity).destination;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks if an activity with the given name already exists.
+&nbsp;     *
+&nbsp;     * @param activityName The name of the activity to check.
+&nbsp;     * @return true if the activity already exists, false otherwise.
+&nbsp;     */
+&nbsp;    public  boolean checkExistingActivity(String activityName){
+<b class="fc">&nbsp;        if(getActivityMap().containsKey(activityName)){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Activity already exists at &quot;+ getDestination(activityName) +&quot; , Please add different activity&quot;);</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * This method adds activities to a destination.
+&nbsp;     *
+&nbsp;     * @param destinationName The name of the destination.
+&nbsp;     * @param in The Scanner object used to get user input.
+&nbsp;     * @param packageCapacity The capacity of the travel package.
+&nbsp;     * @return The list of activities added.
+&nbsp;     */
+&nbsp;    public List&lt;Activity&gt; addActivity(String destinationName, Scanner in, int packageCapacity){
+<b class="fc">&nbsp;        int number = 1;</b>
+&nbsp;        try{
+<b class="fc">&nbsp;            List&lt;Activity&gt; list = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;            for(;;){
+<b class="fc">&nbsp;                System.out.println(&quot;Add Activity &quot;+number+&quot; Name : &quot;);</b>
+<b class="fc">&nbsp;                String name = in.nextLine();</b>
+<b class="fc">&nbsp;               if(checkExistingActivity(name)) {</b>
+<b class="fc">&nbsp;                   continue;</b>
+&nbsp;               }
+<b class="fc">&nbsp;                number++;</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Add Activity Description : &quot;);</b>
+<b class="fc">&nbsp;                String description = in.nextLine();</b>
+&nbsp;                String num;
+&nbsp;                String amount;
+&nbsp;                while(true){
+<b class="fc">&nbsp;                    System.out.println(&quot;Add Activity Cost : &quot;);</b>
+<b class="fc">&nbsp;                     amount = in.nextLine();</b>
+&nbsp;
+<b class="fc">&nbsp;                    System.out.println(&quot;Add Capacity : &quot;);</b>
+<b class="fc">&nbsp;                     num = in.nextLine();</b>
+&nbsp;
+<b class="fc">&nbsp;                    if (!Util.isNumeric(amount) || !Util.isNumeric(num)) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Please enter valid numbers for Activity Cost and Capacity!&quot;);</b>
+<b class="fc">&nbsp;                        continue;</b>
+&nbsp;                    }
+&nbsp;
+<b class="fc">&nbsp;                    if(Integer.parseInt(num) &gt; packageCapacity){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Activity capacity cannot be greater than package capacity !&quot;);</b>
+<b class="fc">&nbsp;                        continue;</b>
+&nbsp;                    }
+&nbsp;                    else {
+&nbsp;                        break;
+&nbsp;                    }
+&nbsp;                }
+<b class="fc">&nbsp;                int activityUniqueId = UniqueIdentifierGenerator.generateActivityNumber();</b>
+<b class="fc">&nbsp;                Activity activity = new Activity(&quot;ACT&quot; + activityUniqueId, name, description, Double.parseDouble(amount), Integer.parseInt(num), destinationName);</b>
+<b class="fc">&nbsp;                getActivityMap().put(activity.getName(), activity );</b>
+<b class="fc">&nbsp;                list.add(activity);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Do you want to add more activities ? yes or no&quot;);</b>
+<b class="fc">&nbsp;                String choice =in.nextLine().toLowerCase();</b>
+<b class="fc">&nbsp;                 if(choice.equals(&quot;no&quot;)){</b>
+<b class="fc">&nbsp;                     break;</b>
+&nbsp;                 }
+<b class="nc">&nbsp;            }</b>
+&nbsp;//            in.reset();
+<b class="fc">&nbsp;            System.out.println(&quot;Activities added successfully !&quot;);</b>
+<b class="fc">&nbsp;            return list;</b>
+<b class="fc">&nbsp;        }catch(Exception e){</b>
+<b class="fc">&nbsp;            System.out.println(e.getMessage());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return new ArrayList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;     /**
+&nbsp;     * This method prints the details of all activities in the given list.
+&nbsp;     *
+&nbsp;     * @param activities The list of activities to print.
+&nbsp;     */
+&nbsp;    public static void printActivity(List&lt;Activity&gt; activities){
+<b class="fc">&nbsp;        if (activities.isEmpty()) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;No Activities Available !&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        int number = 0;</b>
+<b class="fc">&nbsp;        for (Activity activity : activities) {</b>
+<b class="fc">&nbsp;            number++;</b>
+<b class="fc">&nbsp;            System.out.println(number + &quot; Activity Name: &quot; + activity.getName()</b>
+<b class="fc">&nbsp;                    + &quot; | Activity Description: &quot; + activity.getDescription()</b>
+<b class="fc">&nbsp;                    + &quot; | Activity Capacity: &quot; + activity.getCapacity() + &quot; persons&quot;</b>
+<b class="fc">&nbsp;                    + &quot; | Activity Cost: ? &quot; + activity.getCost() + &quot; | Seat Remaining: &quot; + activity.getAvailableSeat());</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks if the user is interested in booking activities and book activity.
+&nbsp;     *
+&nbsp;     * @param in The Scanner object used to get user input.
+&nbsp;     * @param pid The passenger id.
+&nbsp;     * @return The list of activities the user is interested in.
+&nbsp;     */
+&nbsp;    public static List&lt;PassengerActivity&gt; checkUserInterest(Scanner in, String pid){
+<b class="fc">&nbsp;        List&lt;PassengerActivity&gt; activities = new ArrayList&lt;&gt;();</b>
+&nbsp;        for(;;) {
+<b class="fc">&nbsp;            System.out.println(&quot;Do you want to book activities ? yes or no&quot;);</b>
+<b class="fc">&nbsp;            String choice = in.nextLine();</b>
+<b class="fc">&nbsp;            if (choice.equals(&quot;yes&quot;)) {</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Enter Activity Name : &quot;);</b>
+<b class="fc">&nbsp;                String activityCode = in.nextLine();</b>
+<b class="fc">&nbsp;                Activity activity = checkActivity(activityCode);</b>
+<b class="fc">&nbsp;                if (activity == null) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Activity not found !&quot;);</b>
+<b class="fc">&nbsp;                    continue;</b>
+&nbsp;                }
+<b class="fc">&nbsp;                else if(activity.getAvailableSeat() &lt;= 0){</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Activity is full !&quot;);</b>
+<b class="fc">&nbsp;                    continue;</b>
+&nbsp;                }
+<b class="fc">&nbsp;                PassengerActivity passengerActivity = bookActivity(activity, pid, in);</b>
+<b class="fc">&nbsp;                if(passengerActivity.getAmount() &gt;= 0){</b>
+<b class="fc">&nbsp;                    activities.add(passengerActivity);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            if(choice.equals(&quot;no&quot;)){</b>
+<b class="fc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return activities;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * This method checks if an activity with the given code exists.
+&nbsp;     *
+&nbsp;     * @param activityCode The code of the activity to check.
+&nbsp;     * @return The activity if it exists, null otherwise.
+&nbsp;     */
+&nbsp;    public static Activity checkActivity(String activityCode){
+<b class="fc">&nbsp;       return getActivityMap().get(activityCode);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method books an activity for a passenger.
+&nbsp;     *
+&nbsp;     * @param activity The activity to book.
+&nbsp;     * @param pid The passenger id.
+&nbsp;     * @param in The Scanner object used to get user input.
+&nbsp;     * @return The PassengerActivity object representing the booked activity.
+&nbsp;     */
+&nbsp;    public static PassengerActivity bookActivity(Activity activity, String pid, Scanner in){
+<b class="fc">&nbsp;        PassengerActivity passengerActivity = new PassengerActivity();</b>
+<b class="fc">&nbsp;        if(checkActivity(activity.getName()) != null){</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Confirm Booking ? yes or no&quot;);</b>
+<b class="fc">&nbsp;        String consent = in.nextLine().toLowerCase();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (consent.equals(&quot;yes&quot;)) {</b>
+<b class="fc">&nbsp;            passengerActivity  = Passenger.bookActivityForPassenger(pid, activity.getCost());</b>
+<b class="fc">&nbsp;            if(passengerActivity.getAmount() &gt;= 0){</b>
+<b class="fc">&nbsp;                passengerActivity.setActivity(activity);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Activity Booked Successfully !&quot;);</b>
+<b class="fc">&nbsp;                activity.setBookedSeat(activity.getBookedSeat() + 1);</b>
+<b class="fc">&nbsp;                return passengerActivity;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;            passengerActivity.setAmount(-1.0);</b>
+&nbsp;
+&nbsp;    }
+<b class="fc">&nbsp;        return passengerActivity;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public static List&lt;Activity&gt; loadActivities(){
+<b class="fc">&nbsp;        List&lt;Activity&gt; activities = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        activities.add(new Activity(&quot;ACT1&quot;,&quot;marina&quot;,&quot;swim&quot;, 100, 0, &quot;chennai&quot;));</b>
+<b class="fc">&nbsp;        activities.add(new Activity(&quot;ACT2&quot;,&quot;santhome&quot;,&quot;explore&quot;, 20, 7, &quot;chennai&quot;));</b>
+<b class="fc">&nbsp;        activities.add(new Activity(&quot;ACT3&quot;,&quot;shop&quot;,&quot;shop&quot;, 50, 5, &quot;chennai&quot;));</b>
+<b class="fc">&nbsp;        loadActivityMap(activities);</b>
+<b class="fc">&nbsp;        return activities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void loadActivityMap(List&lt;Activity&gt; activities){
+<b class="fc">&nbsp;        for(Activity activity : activities){</b>
+<b class="fc">&nbsp;            getActivityMap().put(activity.getName(), activity);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-29 23:06</div>
+</div>
+</body>
+</html>

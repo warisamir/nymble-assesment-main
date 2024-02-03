@@ -1,0 +1,326 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Passenger</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nymble</a>
+</div>
+
+<h1>Coverage Summary for Class: Passenger (com.nymble)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Passenger</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71.4%
+  </span>
+  <span class="absValue">
+    (15/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.3%
+  </span>
+  <span class="absValue">
+    (70/83)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nymble;
+&nbsp;
+&nbsp;import com.nymble.Util.PassengerType;
+&nbsp;import com.nymble.Util.UniqueIdentifierGenerator;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp;* This class represents a Passenger in a travel package.
+&nbsp; * It contains the details of a passenger including their name, number, passenger type, balance, and activities.
+&nbsp; * It also provides methods to get the passenger map, create a new passenger, print passenger details, and print all passengers.
+&nbsp; * 
+&nbsp; * @author Raguvaran
+&nbsp; * @version 1.0
+&nbsp; * @since 2023-12-28
+&nbsp; */
+&nbsp;public class Passenger {
+&nbsp;    private String name;
+&nbsp;    private String number;
+&nbsp;
+&nbsp;    private PassengerType passengerType;
+&nbsp;    private double balance;
+&nbsp;
+&nbsp;    private List&lt;PassengerActivity&gt; passengerActivities;
+&nbsp;
+<b class="fc">&nbsp;    public static HashMap&lt;String, Passenger&gt; passengerMap = new LinkedHashMap&lt;&gt;();</b>
+&nbsp;
+&nbsp;    public static HashMap&lt;String, Passenger&gt; getPassengerMap() {
+<b class="fc">&nbsp;        return passengerMap;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    public Passenger() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor for the Passenger class.
+&nbsp;     *
+&nbsp;     * @param name The name of the passenger.
+&nbsp;     * @param number The number of the passenger.
+&nbsp;     * @param passengerType The type of the passenger.
+&nbsp;     * @param balance The balance of the passenger.
+&nbsp;     * @param passengerActivities The activities of the passenger.
+&nbsp;     */
+<b class="fc">&nbsp;    public Passenger(String name, String number, PassengerType passengerType, double balance, List&lt;PassengerActivity&gt; passengerActivities) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.number = number;</b>
+<b class="fc">&nbsp;        this.passengerType = passengerType;</b>
+<b class="fc">&nbsp;        this.balance = balance;</b>
+<b class="fc">&nbsp;        this.passengerActivities = passengerActivities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNumber() {
+<b class="fc">&nbsp;        return number;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PassengerType getPassengerType() {
+<b class="fc">&nbsp;        return passengerType;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getBalance() {
+<b class="fc">&nbsp;        return balance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;PassengerActivity&gt; getPassengerActivities() {
+<b class="fc">&nbsp;        return passengerActivities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPassengerActivities(List&lt;PassengerActivity&gt; passengerActivities) {
+<b class="nc">&nbsp;        this.passengerActivities = passengerActivities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBalance(double balance) {
+<b class="fc">&nbsp;        this.balance = balance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPassengerType(PassengerType passengerType) {
+<b class="nc">&nbsp;        this.passengerType = passengerType;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNumber(String number) {
+<b class="nc">&nbsp;        this.number = number;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method checks if a passenger with the given id exists.
+&nbsp; *
+&nbsp; * @param pid The id of the passenger to check.
+&nbsp; * @return true if the passenger exists, false otherwise.
+&nbsp; */
+&nbsp;    public static boolean checkPassenger(String pid){
+<b class="fc">&nbsp;        if(passengerMap.containsKey(pid)){</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        System.out.println(&quot;Passenger Not Exists !&quot;);</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method checks if a passenger can book an activity and books it if possible.
+&nbsp; *
+&nbsp; * @param pid The id of the passenger.
+&nbsp; * @param cost The cost of the activity.
+&nbsp; * @return The PassengerActivity object representing the booked activity.
+&nbsp; */
+&nbsp;    public static PassengerActivity processBooking(String pid, double cost){
+<b class="fc">&nbsp;        Passenger passenger = passengerMap.get(pid);</b>
+<b class="fc">&nbsp;        PassengerActivity passengerActivity = new PassengerActivity();</b>
+<b class="fc">&nbsp;        if(passenger.getPassengerType().equals(PassengerType.STANDARD)){</b>
+<b class="fc">&nbsp;            if(passenger.getBalance() &gt;= cost) {</b>
+<b class="fc">&nbsp;                passenger.setBalance(passenger.getBalance() - cost);</b>
+<b class="fc">&nbsp;                passengerActivity.setAmount(cost);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Amount Paid : &quot;+ cost +&quot; | Passenger Balance : &quot; + passenger.getBalance());</b>
+<b class="fc">&nbsp;                return passengerActivity;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }else if(passenger.getPassengerType().equals(PassengerType.GOLD)){</b>
+<b class="fc">&nbsp;            double discountedAmount = cost-(cost*0.1);</b>
+<b class="fc">&nbsp;            if(passenger.getBalance() &gt;= discountedAmount){</b>
+<b class="fc">&nbsp;                passenger.setBalance(passenger.getBalance() - discountedAmount);</b>
+<b class="fc">&nbsp;                 passengerActivity.setAmount(discountedAmount);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;10% Discount Applied ! for Gold Passengers&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Amount Paid : &quot;+discountedAmount+&quot; | Passenger Balance : &quot; + passenger.getBalance());</b>
+&nbsp;
+<b class="fc">&nbsp;                 return passengerActivity;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        else if(passenger.getPassengerType().equals(PassengerType.PREMIUM)){</b>
+<b class="fc">&nbsp;             passengerActivity.setAmount(0.0);</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Premium Passengers can book any activity for free !&quot;);</b>
+<b class="fc">&nbsp;             return passengerActivity;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Insufficient Balance !&quot;);</b>
+<b class="fc">&nbsp;        passengerActivity.setAmount(-1.0);</b>
+<b class="fc">&nbsp;        return passengerActivity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method books an activity for a passenger.
+&nbsp; *
+&nbsp; * @param pid The id of the passenger.
+&nbsp; * @param cost The cost of the activity.
+&nbsp; * @return The PassengerActivity object representing the booked activity.
+&nbsp; */
+&nbsp;    public static PassengerActivity bookActivityForPassenger(String pid, double cost){
+<b class="fc">&nbsp;        PassengerActivity passengerActivity = processBooking(pid, cost);</b>
+<b class="fc">&nbsp;        if(passengerActivity.getAmount() &gt;= 0){</b>
+&nbsp;            //succesfully booked
+<b class="fc">&nbsp;            return passengerActivity;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return passengerActivity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method creates a new passenger.
+&nbsp; *
+&nbsp; * @param in The Scanner object used to get user input.
+&nbsp; */
+&nbsp;    public static void createNewPassenger(Scanner in){
+<b class="fc">&nbsp;        System.out.println(&quot;Enter Passenger Name : &quot;);</b>
+<b class="fc">&nbsp;        String name = in.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Enter Passenger Type : A for STANDARD, B for GOLD , C for PREMIUM &quot; );</b>
+<b class="fc">&nbsp;        String type = in.nextLine().toUpperCase();</b>
+<b class="fc">&nbsp;        double balance = 0.0;</b>
+<b class="fc">&nbsp;        if(type.equals(&quot;A&quot;) || type.equals(&quot;B&quot;)){</b>
+&nbsp;
+<b class="fc">&nbsp;            System.out.println(&quot;Enter Passenger Balance : &quot;);</b>
+<b class="fc">&nbsp;            balance = in.nextDouble();</b>
+<b class="fc">&nbsp;            if(balance &lt; 0){</b>
+<b class="nc">&nbsp;                balance = 0;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        }
+<b class="fc">&nbsp;        PassengerType passengertype = type.equals(&quot;A&quot;)? PassengerType.STANDARD:type.equals(&quot;B&quot;)?PassengerType.GOLD:PassengerType.PREMIUM;</b>
+<b class="fc">&nbsp;        int passengerUniqueId = UniqueIdentifierGenerator.generatePassengerNumber();</b>
+<b class="fc">&nbsp;        Passenger passenger = new Passenger( name, &quot;PA&quot;+passengerUniqueId,passengertype, balance,new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;        passengerMap.put(passenger.getNumber(), passenger);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Passenger Created Succesfully ! Passenger Number : &quot;+passenger.getNumber());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints the details of a passenger.
+&nbsp; *
+&nbsp; * @param pid The id of the passenger.
+&nbsp; */
+&nbsp;    public static void printPassengerDetails(String pid){
+<b class="fc">&nbsp;        Passenger passenger = passengerMap.get(pid);</b>
+<b class="fc">&nbsp;        if(passenger == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Passenger Not Found !&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Passenger Name : &quot;+passenger.getName()+&quot; | Passenger Number : &quot;+passenger.getNumber()+&quot; | Passenger Type : &quot;+passenger.getPassengerType());</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Passenger Balance : &quot;+passenger.getBalance());</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Passenger Activities : &quot;);</b>
+<b class="fc">&nbsp;        List&lt;PassengerActivity&gt; activities = passengerMap.get(pid).getPassengerActivities();</b>
+<b class="fc">&nbsp;        for(PassengerActivity activity : activities){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Activity Name : &quot;+activity.getActivity().getName()+&quot; | Activity Destination : &quot;+ activity.getActivity().getDestination()+&quot; | Activity Cost : &quot;+activity.getAmount());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp; * This method prints the details of all passengers.
+&nbsp; */
+&nbsp;    public static void printAllPassengers(){
+<b class="nc">&nbsp;        for(String pid:passengerMap.keySet()){</b>
+<b class="nc">&nbsp;            printPassengerDetails(pid);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void loadPassenger(){
+<b class="fc">&nbsp;        passengerMap.put(&quot;PA4&quot;, new Passenger(&quot;John&quot;, &quot;PA4&quot;, PassengerType.STANDARD, 1000, new ArrayList&lt;&gt;()));</b>
+<b class="fc">&nbsp;        passengerMap.put(&quot;PA2&quot;, new Passenger(&quot;Kay&quot;, &quot;PA2&quot;, PassengerType.GOLD, 1, new ArrayList&lt;&gt;()));</b>
+<b class="fc">&nbsp;        passengerMap.put(&quot;PA10&quot;, new Passenger(&quot;RamAbdullah&quot;, &quot;PA10&quot;, PassengerType.GOLD, 1000, new ArrayList&lt;&gt;()));</b>
+<b class="fc">&nbsp;        passengerMap.put(&quot;PA3&quot;, new Passenger(&quot;Suji&quot;, &quot;PA3&quot;, PassengerType.PREMIUM, 1000, new ArrayList&lt;&gt;()));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-29 23:06</div>
+</div>
+</body>
+</html>

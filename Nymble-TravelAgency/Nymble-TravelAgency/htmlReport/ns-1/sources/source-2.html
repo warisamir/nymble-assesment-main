@@ -1,0 +1,274 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Destination</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nymble</a>
+</div>
+
+<h1>Coverage Summary for Class: Destination (com.nymble)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Destination</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.4%
+  </span>
+  <span class="absValue">
+    (53/55)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nymble;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Scanner;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;/**
+&nbsp; * This class represents a .Destination in a travel package.
+&nbsp; * It contains the name of the destination and a list of activities available at the destination.
+&nbsp; * It also provides methods to add a destination and list all destinations.
+&nbsp; * 
+&nbsp; * @author Raguvaran
+&nbsp; * @version 1.0
+&nbsp; * @since 2023-12-28
+&nbsp; */
+&nbsp;public class Destination {
+&nbsp;    private String name;
+&nbsp;    private List&lt;Activity&gt; activities;
+&nbsp;
+<b class="fc">&nbsp;    public Destination() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;     /**
+&nbsp;     * Constructor for the .Destination class.
+&nbsp;     *
+&nbsp;     * @param name The name of the destination.
+&nbsp;     * @param activities The list of activities available at the destination.
+&nbsp;     */
+<b class="fc">&nbsp;    public Destination(String name, List&lt;Activity&gt; activities) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.activities = activities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setName(String name) {
+<b class="fc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Activity&gt;  getActivities() {
+<b class="fc">&nbsp;        return activities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setActivities(List&lt;Activity&gt; activities) {
+<b class="fc">&nbsp;        this.activities = activities;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method adds a new destination.
+&nbsp;     * It prompts the user to enter the destination name and whether they want to add activities.
+&nbsp;     * If they want to add activities, it calls the addActivities method of the .Activity class.
+&nbsp;     * It then adds the new destination to the list of destinations.
+&nbsp;     * If the user wants to exit, it breaks the loop and returns the list of destinations.
+&nbsp;     * If an exception occurs, it prints the exception message and returns an empty list.
+&nbsp;     *
+&nbsp;     * @param in The Scanner object used to get user input.
+&nbsp;     * @param packageCapacity The capacity of the travel package.
+&nbsp;     * @return The list of destinations.
+&nbsp;     */
+&nbsp;    public static List&lt;Destination&gt; addDestination( Scanner in , int packageCapacity){
+&nbsp;
+&nbsp;        try{
+<b class="fc">&nbsp;            List&lt;Destination&gt; destinationList = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;            List&lt;String&gt; destinationNames = new ArrayList&lt;&gt;();</b>
+&nbsp;            for(;;){
+<b class="fc">&nbsp;                Destination dest = new Destination();</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Enter .Destination Name : &quot;);</b>
+<b class="fc">&nbsp;                String name = in.nextLine();</b>
+<b class="fc">&nbsp;                if(destinationNames.contains(name)){</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;.Destination already exists in this Travel package ! Please enter a different name&quot;);</b>
+<b class="nc">&nbsp;                    continue;</b>
+&nbsp;                }
+<b class="fc">&nbsp;                System.out.println(&quot;Do you want to add activities ? enter yes or no &quot;);</b>
+<b class="fc">&nbsp;                String consent = in.nextLine().toLowerCase();</b>
+<b class="fc">&nbsp;                while(consent.equals(&quot;no&quot;) &amp;&amp; !hasActivity(destinationList, name)){</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Destinations should have atleast one activity&quot;);</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Do you want to add activities ? enter yes or no &quot;);</b>
+<b class="fc">&nbsp;                    consent = in.nextLine().toLowerCase();</b>
+&nbsp;                }
+<b class="fc">&nbsp;                if (consent.equals(&quot;yes&quot;)) {</b>
+<b class="fc">&nbsp;                    dest.setActivities(new Activity().addActivity(name, in, packageCapacity));</b>
+<b class="fc">&nbsp;                    dest.setName(name);</b>
+<b class="fc">&nbsp;                    destinationNames.add(name);</b>
+<b class="fc">&nbsp;                    destinationList.add(dest);</b>
+&nbsp;                }
+<b class="fc">&nbsp;                System.out.println(&quot;Do you want to exit .Destination ? yes or no&quot;);</b>
+<b class="fc">&nbsp;                String choice =in.nextLine().toLowerCase();</b>
+<b class="fc">&nbsp;                System.out.println(&quot;choice is &quot;+ choice);</b>
+<b class="fc">&nbsp;                if(choice.equals(&quot;yes&quot;)){</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+&nbsp;
+<b class="fc">&nbsp;            System.out.println(&quot;Destination Added Successfully&quot;);</b>
+<b class="fc">&nbsp;            return destinationList;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        catch (Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        return new ArrayList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean hasActivity(List&lt;Destination&gt; destinations, String destName){
+<b class="fc">&nbsp;        return destinations.parallelStream().anyMatch(destination -&gt; destination.getActivities().parallelStream()</b>
+<b class="fc">&nbsp;                .anyMatch(activity -&gt; activity.getDestination().equals(destName)));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;//    /**
+&nbsp;//     * This method lists all destinations.
+&nbsp;//     * It iterates over the list of destinations and prints the destination name and activities.
+&nbsp;//     *
+&nbsp;//     * @param destinations The list of destinations to be printed.
+&nbsp;//     */
+&nbsp;//    public static void listDestination(List&lt;.Destination&gt; destinations){
+&nbsp;//        int number = 0;
+&nbsp;//        for(.Destination destination : destinations){
+&nbsp;//            number++;
+&nbsp;//            System.out.println(number+&quot; .Destination Name : &quot;+destination.getName());
+&nbsp;//            .Activity.printActivity(destination.getActivities());
+&nbsp;//        }
+&nbsp;//    }
+&nbsp;//
+&nbsp;//    public static void printAllAvailableActivities(List&lt;.Destination&gt; destinations){
+&nbsp;//        for(.Destination destination:destinations){
+&nbsp;//            .Activity.printActivityWithAvailableSeats(destination);
+&nbsp;//        }
+&nbsp;//    }
+&nbsp;
+&nbsp;/**
+&nbsp; * This method prints the details of a list of destinations.
+&nbsp; * If the `onlyAvailable` parameter is false, it prints the name and activities of each destination.
+&nbsp; * If the `onlyAvailable` parameter is true, it filters the activities of each destination to only include those with available seats, and then prints the activities.
+&nbsp; *
+&nbsp; * @param destinations The list of destinations to be printed.
+&nbsp; * @param onlyAvailable If true, only activities with available seats are printed. If false, all activities are printed.
+&nbsp; */
+&nbsp;
+&nbsp;        public static void printDestinations(List&lt;Destination&gt; destinations, boolean onlyAvailable){
+<b class="fc">&nbsp;            int number = 0;</b>
+<b class="fc">&nbsp;            for(Destination destination:destinations){</b>
+<b class="fc">&nbsp;                number++;</b>
+&nbsp;                List&lt;Activity&gt; activities;
+<b class="fc">&nbsp;                if(!onlyAvailable){</b>
+<b class="fc">&nbsp;                    System.out.println(number+&quot; Destination Name : &quot;+destination.getName());</b>
+<b class="fc">&nbsp;                    activities = destination.getActivities();</b>
+&nbsp;                }
+&nbsp;                else{
+<b class="fc">&nbsp;                    activities = destination.getActivities().stream().filter( activity -&gt;  activity.getAvailableSeat() &gt; 0)</b>
+<b class="fc">&nbsp;                            .collect(Collectors.toList());</b>
+&nbsp;                }
+<b class="fc">&nbsp;                Activity.printActivity(activities);</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;        public static List&lt;Destination&gt; loadDestinations(){
+&nbsp;
+<b class="fc">&nbsp;            List&lt;Activity&gt; activities = Activity.loadActivities();</b>
+<b class="fc">&nbsp;            Destination destinations = new Destination(&quot;chennai&quot;,activities);</b>
+<b class="fc">&nbsp;            List&lt;Destination&gt; destinationList = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;            destinationList.add(destinations);</b>
+<b class="fc">&nbsp;            return destinationList;</b>
+&nbsp;        }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-29 23:06</div>
+</div>
+</body>
+</html>

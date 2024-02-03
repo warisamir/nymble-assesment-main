@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nymble</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (com.nymble)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45.5%
+  </span>
+  <span class="absValue">
+    (20/44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nymble;
+&nbsp;
+&nbsp;import com.nymble.Util.ScannerUtil;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;/**
+&nbsp; * This is the main class for the Travel Application.
+&nbsp; * It provides a menu for the user to interact with the application.
+&nbsp; *
+&nbsp; * @author Raguvaran
+&nbsp; * @version 1.0
+&nbsp; * @since 2023-12-28
+&nbsp; */
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;
+&nbsp;
+&nbsp;    public static void showMenu(Scanner in){
+&nbsp;        try{
+&nbsp;
+<b class="fc">&nbsp;            TravelPackage travelPackage = new TravelPackage();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;            System.out.println(&quot;Welcome to Bymble Travels &quot;);</b>
+&nbsp;            for(;;){
+<b class="fc">&nbsp;                System.out.println(&quot;*******************************************************************************************&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Enter your choice&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;0 : Exit&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;1 : List available Travel Packages&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;2 : List all Activities available&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;3 : List all passengers enrolled in travel package&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;4 : Book Travel package&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;5 : Add Travel package&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;6 : List individual passenger details&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;7 : Create New com.nymble.Passenger&quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;*******************************************************************************************&quot;);</b>
+<b class="fc">&nbsp;                int choice = in.nextInt();</b>
+<b class="fc">&nbsp;                in.nextLine();</b>
+<b class="nc">&nbsp;                if(choice == 0){</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+<b class="nc">&nbsp;                switch(choice){</b>
+<b class="nc">&nbsp;                    case 1: TravelPackage.printItineraryDetails();</b>
+<b class="nc">&nbsp;                        break;</b>
+<b class="nc">&nbsp;                    case 2: TravelPackage.printAvailableActivities();</b>
+<b class="nc">&nbsp;                        break;</b>
+<b class="nc">&nbsp;                    case 3: TravelPackage.printPassengerList(in);</b>
+<b class="nc">&nbsp;                        break;</b>
+<b class="nc">&nbsp;                    case 4: TravelPackage.bookPackage(in);</b>
+<b class="nc">&nbsp;                        break;</b>
+<b class="nc">&nbsp;                    case 5: TravelPackage.createNewPackage(in);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case 6:
+<b class="nc">&nbsp;                        System.out.println(&quot;Enter the passenger number&quot;);</b>
+<b class="nc">&nbsp;                        String num = in.nextLine();</b>
+<b class="nc">&nbsp;                        Passenger.printPassengerDetails(num);</b>
+<b class="nc">&nbsp;                        break;</b>
+<b class="nc">&nbsp;                    case 7 : Passenger.createNewPassenger(in);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    default:
+<b class="nc">&nbsp;                        System.out.println(&quot;Invalid choice&quot;);</b>
+&nbsp;                        break;
+&nbsp;
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+&nbsp;        } finally {
+<b class="fc">&nbsp;            in.close();</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Program exit&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        final Scanner in = ScannerUtil.getScanner();</b>
+<b class="nc">&nbsp;        showMenu(in);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-29 23:06</div>
+</div>
+</body>
+</html>
